@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر إلكتروني</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <a href="Home.html" class="logo">
+        <img src="logo.png" alt="">
+        <span>كليك شوب</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="Home.html">الرئيسية</a></li>
+          <li><a href="About.html">عن المتجر</a></li>
+          <li><a href="Home.html#products">المنتجات</a></li>
+          <li><a href="Home.html#contact">اتصل بنا</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon" onclick="showCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wzNjM5Nzd8MHwxfHNlYXJjaHwxzfHNob3BwaW5nJTIwc3RvcmUlMjBzaG9wZml0fGVufDB8fHx8fDE3MTc3NTE1NjF8MA==&auto=format&fit=crop&w=1470&q=80" alt="خصومات كبيرة">
+          <div class="slide-content">
+            <h2>خصومات تصل إلى 50%</h2>
+            <p>تسوق الآن واستمتع بخصومات على جميع المنتجات</p>
+            <a href="#products" class="slider-btn">عرض المنتجات</a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wzNjM5Nzd8MHwxfHNlYXJjaHwxzfHNob3BwaW5nJTIwc3RvcmUlMjBzaG9wZml0fGVufDB8fHx8fDE3MTc3NTE1NjF8MA==&auto=format&fit=crop&w=1399&q=80" alt="منتجات مميزة">
+          <div class="slide-content">
+            <h2>منتجات مميزة</h2>
+            <p>اكتشف منتجات عالية الجودة بأفضل الأسعار</p>
+            <a href="#products" class="slider-btn">تصفح المنتجات</a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+    <section id="products" class="section">
+      <div class="container">
+        <h2 class="section-title">منتجاتنا</h2>
+        <div class="categories">
+          <div class="category active" data-category="all">الكل</div>
+          <div class="category" data-category="electronics">إلكترونيات</div>
+          <div class="category" data-category="clothes">ملابس</div>
+          <div class="category" data-category="home">منزل</div>
+        </div>
+        <div class="products-grid" id="products-container"></div>
+      </div>
+    </section>
+
+    <section id="features" class="section featured">
+      <div class="container">
+        <h2 class="section-title">ميزاتنا</h2>
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>شحن سريع</h3>
+            <p>توصيل خلال 24 ساعة في جميع المناطق</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-headset"></i>
+            <h3>دعم فني</h3>
+            <p>خدمة دعم العملاء متاحة 24/7</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <h3>دفع آمن</h3>
+            <p>ضمان أمان بياناتك وحماية التسوق</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-undo"></i>
+            <h3>استرجاع سهل</h3>
+            <p>يمكنك استرجاع المنتجات خلال 14 يومًا</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3><i class="fas fa-shopping-cart"></i> سلة التسوق</h3>
+        <button class="close-cart" onclick="closeCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>المجموع:</span>
+          <span id="cart-total">0 جنيه</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">
+          <i class="fas fa-credit-card"></i> إنهاء الطلب
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>عن المتجر</h3>
+          <p>كليك شوب يوفر أفضل المنتجات بأسعار تنافسية مع خدمة توصيل سريعة.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>روابط سريعة</h3>
+          <ul>
+            <li><a href="Home.html">الرئيسية</a></li>
+            <li><a href="About.html">عن المتجر</a></li>
+            <li><a href="Home.html#products">المنتجات</a></li>
+            <li><a href="Home.html#contact">اتصل بنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>تواصل معنا</h3>
+          <ul>
+            <li><i class="fas fa-phone"></i> 01552481072</li>
+            <li><i class="fas fa-envelope"></i> Me@store.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> دسوق، شارع الجيش</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 <span>كليك شوب</span>. جميع الحقوق محفوظة لينا.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
